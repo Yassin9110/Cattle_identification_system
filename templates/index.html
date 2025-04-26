@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cattle Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Cattle Recognition System</h1>
+    </header>
+
+    <div class="container">
+        <!-- Registration Form -->
+        <form id="register-form" action="/register" method="POST" enctype="multipart/form-data">
+            <h2>Register Cattle</h2>
+            <div class="file-inputs">
+                <div class="file-group">
+                    <label>Upload 5 muzzle images:</label>
+                    <input type="file" name="files[]" required>
+                    <input type="file" name="files[]" required>
+                    <input type="file" name="files[]" required>
+                    <input type="file" name="files[]" required>
+                    <input type="file" name="files[]" required>
+                </div>
+            </div>
+            <label for="cattle_id">Cattle ID:</label>
+            <input type="text" name="cattle_id" required>
+            <button type="submit">Register</button>
+        </form>
+
+        <!-- Recognition Form -->
+        <form id="recognize-form" action="/recognize" method="POST" enctype="multipart/form-data">
+            <h2>Recognize Cattle</h2>
+            <input type="file" name="file" required>
+            <button type="submit">Recognize</button>
+        </form>
+
+        <!-- Results Section -->
+        <div id="results">
+            <div id="annotated-container"></div>
+            <div id="crops-container"></div>
+            <div id="similarity-result"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    
+    <div class="overlay">
+        <div class="loader"></div>
+    </div>
+    
+    <div class="status-message">
+        <p class="message-text"></p>
+    </div>
+</body>
+</html>
