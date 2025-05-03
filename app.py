@@ -15,7 +15,7 @@ from inference_sdk import InferenceHTTPClient
 # Initialize Roboflow client
 CLIENT = InferenceHTTPClient(
     api_url="https://serverless.roboflow.com",
-    api_key="add_your_api_key_here"
+    api_key="uMnBoh9m5MD03z98rAdO"
 )
 
 class SiameseNetwork(nn.Module):
@@ -177,7 +177,7 @@ def recognize_cattle():
             max_similarity = similarity
             recognized_cattle_id = cattle_id
 
-    threshold = 0.7
+    threshold = 0.85  # Set a threshold for recognition
     if max_similarity >= threshold:
         return jsonify({
             "recognized_cattle_id": recognized_cattle_id,
